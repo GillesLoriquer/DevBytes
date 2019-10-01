@@ -18,6 +18,7 @@
 package com.example.android.devbyteviewer.viewmodels
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import java.io.IOException
 
 /**
  * DevByteViewModel designed to store and manage UI-related data in a lifecycle conscious way. This
@@ -60,8 +62,16 @@ class DevByteViewModel(application: Application) : AndroidViewModel(application)
     private val videosRepository = VideosRepository(database)
 
     init {
+        refreshDataFromRepository()
+    }
+
+    private fun refreshDataFromRepository() {
         viewModelScope.launch {
-            videosRepository.refreshVideos()
+            try {
+                videosRepository.refreshVideos()
+            } catch (networkError: IOException) {
+                Toast.makeText(getApplication(), "Network error", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
