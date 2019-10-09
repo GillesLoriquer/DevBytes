@@ -1,6 +1,6 @@
 # DevByte Viewer App
 
-Application de récupérer un flux de données REST et de créer un cache hors ligne. Il s'agit de la mise en pratique de la lesson 9 ["Behind the Scenes"](https://classroom.udacity.com/courses/ud9012/) de Google (Udacity)
+Application permettant de récupérer un flux de données REST et de créer un cache hors ligne. Il s'agit de la mise en pratique de la lesson 9 ["Behind the Scenes"](https://classroom.udacity.com/courses/ud9012/) de Google (Udacity)
 
 ## Concepts mis en oeuvre
 
